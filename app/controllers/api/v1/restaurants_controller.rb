@@ -15,7 +15,7 @@ module Api
 
       def show
         @restaurant = Restaurant.find_by(restaurant_id: params[:restaurant_id])
-        render json: @restaurant.detail
+        render json: @restaurant&.detail
       end
 
       def update
