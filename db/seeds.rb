@@ -1,7 +1,39 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+require "csv"
+
+CSV.foreach('data/restaurant_tokyo.csv', headers: true) do |row|
+  Restaurant.create(
+    restaurant_id:            row["restaurant_id"],
+    restaurant_name:          row["restaurant_name"],
+    tel:                      row["tel"],
+    address:                  row["address"],
+    opening_hours:            row["opening_hours"],
+    calendar:                 row["calendar"],
+    restaurant_url:           row["restaurant_url"],
+    lat:                      row["lat"],
+    lng:                      row["lng"],
+    latlng:                   row["latlng"],
+    sub:                      row["SUB"],
+    sub_name:                 row["SUB_NAME"],
+    are:                      row["ARE"],
+    are_name:                 row["ARE_NAME"],
+    pre:                      row["PRE"],
+    pre_name:                 row["PRE_NAME"],
+    lbgt:                     row["LBGT"],
+    lbgt_name:                row["LBGT_NAME"],
+    dbgt:                     row["DBGT"],
+    dbgt_name:                row["DBGT_NAME"],
+    lcat:                     row["LCAT"],
+    lcat_name:                row["LCAT_NAME"],
+    main_cat:                 row["MAIN_CAT"],
+    main_cat_name:            row["MAIN_CAT_NAME"],
+    cats:                     row["CATS"],
+    cats_name:                row["CATS_NAME"],
+    purs:                     row["PURS"],
+    purs_name:                row["PURS_NAME"],
+    seats_num:                row["seats_num"],
+    smoking_type:             row["smoking_type"],
+    restaurant_report_level:  row["restaurant_report_level"],
+    restaurant_like_level:    row["restaurant_like_level"],
+    restaurant_wannago_level: row["restaurant_wannago_level"],
+  )
+end
