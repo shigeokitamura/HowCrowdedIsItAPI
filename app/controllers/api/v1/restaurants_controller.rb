@@ -26,7 +26,7 @@ module Api
             @congestion = Congestion.create(restaurant: @restaurant, degree: params[:congestion])
           end
           if params[:comment]
-            @comment = Comment.create(restaurant: @restaurant, name: paramsn[:name], text: params[:comment])
+            @comment = Comment.create(restaurant: @restaurant, name: params[:name], text: params[:comment])
           end
           render json: @restaurant.detail
         else
