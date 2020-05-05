@@ -25,7 +25,7 @@ module Api
           end
           render json: @restaurant.detail
         else
-          render json: @restaurant.errors
+          render json: @restaurant&.errors
         end
       end
 
