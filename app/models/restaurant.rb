@@ -20,6 +20,7 @@ class Restaurant < ApplicationRecord
         {
           name: c.name,
           text: c.text,
+          posted_at: c.created_at
         }
       end
     end
