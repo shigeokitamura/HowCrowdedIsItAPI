@@ -14,7 +14,19 @@ module Api
       end
 
       def create
-        render json: params
+        params.permit(:restaurant_id, :congestion, :name, :comment)
+        @restaurant = Restaurant.find_by(restaurant_id: params[:restaurant_id])
+        if @restaurant
+          if params[:congestion]
+            @congestion = Congestion.create(restaurant: @restaurant, degree: params[:congestion])
+          end
+          if params[:comment]
+            @comment = Comment.create(restaurant: @restaurant, name: params[:name], text: params[:comment])
+          end
+          render json: @restaurant.detail
+        else
+          render json: @restaurant.errors
+        end
       end
 
       def show
