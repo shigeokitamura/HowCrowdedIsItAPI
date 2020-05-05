@@ -19,14 +19,14 @@ module Api
       end
 
       def update
-        params.permit(:congestion, :comment)
+        params.permit(:congestion, :name, :comment)
         @restaurant = Restaurant.find_by(restaurant_id: params[:restaurant_id])
         if @restaurant
           if params[:congestion]
             @congestion = Congestion.create(restaurant: @restaurant, degree: params[:congestion])
           end
           if params[:comment]
-            @comment = Comment.create(restaurant: @restaurant, text: params[:comment])
+            @comment = Comment.create(restaurant: @restaurant, name: paramsn[:name], text: params[:comment])
           end
           render json: @restaurant.detail
         else

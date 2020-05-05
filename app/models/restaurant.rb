@@ -18,7 +18,7 @@ class Restaurant < ApplicationRecord
     def detail_comments
       comments.map do |c|
         {
-          id:   c.id,
+          name: c.name,
           text: c.text,
         }
       end
