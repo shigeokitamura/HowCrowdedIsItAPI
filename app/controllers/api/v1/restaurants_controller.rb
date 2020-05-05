@@ -13,6 +13,10 @@ module Api
         render json: @restaurants&.map(&:detail)
       end
 
+      def create
+        render json: params
+      end
+
       def show
         @restaurant = Restaurant.find_by(restaurant_id: params[:restaurant_id])
         render json: @restaurant&.detail
