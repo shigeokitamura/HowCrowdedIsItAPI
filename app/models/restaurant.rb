@@ -16,7 +16,7 @@ class Restaurant < ApplicationRecord
 
   private
     def detail_comments
-      comments.map do |c|
+      comments.order(created_at: :desc).map do |c|
         {
           name: c.name,
           text: c.text,
